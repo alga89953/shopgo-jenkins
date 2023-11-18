@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shopgo/services/firebase_service.dart';
+import 'package:shopgo/src/services/firebase_service.dart';
 
 class Home extends StatefulWidget {
   const Home({

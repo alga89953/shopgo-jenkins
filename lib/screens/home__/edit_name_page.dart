@@ -1,4 +1,4 @@
-import 'package:shopgo/services/firebase_service.dart';
+import 'package:shopgo/src/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 
 class EditNamePage extends StatefulWidget {

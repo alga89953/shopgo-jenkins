@@ -1,4 +1,4 @@
-import 'package:shopgo/services/firebase_service.dart';
+//import 'package:shopgo/src/services/firebase_service.dart';
 import 'package:flutter/material.dart';
 
 class AddNamePage extends StatefulWidget {
@@ -26,8 +26,8 @@ class _AddNamePageState extends State<AddNamePage> {
             ),
             ElevatedButton(
                 onPressed: () async {
-                  await addServicio(nameController.text)
-                      .then((_) => {Navigator.pop(context)});
+                  //await addServicio(nameController.text)
+                  //.then((_) => {Navigator.pop(context)});
                 },
                 child: const Text('Guardar')),
           ],

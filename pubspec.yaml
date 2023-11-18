@@ -39,12 +39,19 @@ dependencies:
   cloud_firestore: ^4.13.1
   page_transition: ^2.1.0
   flutter_svg: ^2.0.9
-  google_fonts: ^6.1.0
+
+  #Authetificacion
+  firebase_auth: ^4.6.3
+  firebase_storage: ^11.2.4
+  fluttertoast: ^8.2.4
+  flare_flutter: ^3.0.2
 
   #Servicios de ubicación
   flutter_polyline_points: ^2.0.0
   google_maps_flutter: ^2.5.0
   location: ^5.0.3
+  animate_do: ^3.1.2
+  plugin_platform_interface: ^2.1.7
 
 dev_dependencies:
   flutter_test:

@@ -1,0 +1,13 @@
+export 'package:shopgo/src/screens/404/screen_404.dart';
+export 'package:shopgo/screens/home__/add_name_page.dart';
+export 'package:shopgo/screens/home__/edit_name_page.dart';
+export 'package:shopgo/screens/home__/home_screen.dart';
+export 'package:shopgo/src/screens/splash/splash_screen.dart';
+export 'package:shopgo/screens/auth/auth_screen.dart';
+export 'package:shopgo/screens/auth/features/user_auth/presentation/pages/sign_up_page.dart';
+export 'package:shopgo/src/screens.dart';
+export 'package:shopgo/src/screens/home/home_usuario_screen.dart';
+export 'package:shopgo/src/screens/onboarding/onboarding_screen.dart';
+//export 'package:shopgo/src/screens/details/detail_page.dart';
+export 'package:shopgo/src/screens/home/components/form/form_screen.dart';
+export 'package:shopgo/src/screens/user/profile_screen.dart';

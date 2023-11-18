@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shopgo/src/screens/auth/login.dart';
 //import 'package:shopgo/screens/home/home_screen.dart';
-import 'package:shopgo/src/screens/onboarding/onboarding_screen.dart';
+//import 'package:shopgo/src/screens/onboarding/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              const OnboardingScreen(), // Página que se muestra después del SplashScreen
+              const LoginPage(), // Página que se muestra después del SplashScreen
         ),
       ),
     );

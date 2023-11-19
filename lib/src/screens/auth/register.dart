@@ -1,9 +1,7 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shopgo/src/services/firebase/auth/singup_service.dart';
 import 'login.dart';
-// import 'model.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -19,7 +17,7 @@ class _RegisterState extends State<Register> {
   bool visible = false;
 
   final _formkey = GlobalKey<FormState>();
-  final _auth = FirebaseAuth.instance;
+  //final _auth = FirebaseAuth.instance;
 
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmpassController = TextEditingController();
@@ -275,8 +273,15 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   showProgress = true;
                                 });
-                                signUp(emailController.text,
-                                    passwordController.text, rool);
+                                signUp(
+                                    emailController.text,
+                                    passwordController.text,
+                                    rool,
+                                    emailController.text,
+                                    context,
+                                    _formkey);
+                                //String email, String password, String rool, String emailController,
+                                //BuildContext context, GlobalKey<FormState> formkey
                               },
                               color: Colors.white,
                               child: const Text(
@@ -309,25 +314,5 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
-  }
-
-  void signUp(String email, String password, String rool) async {
-    const CircularProgressIndicator();
-    if (_formkey.currentState!.validate()) {
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => {postDetailsToFirestore(email, rool)})
-          // ignore: body_might_complete_normally_catch_error
-          .catchError((e) {});
-    }
-  }
-
-  postDetailsToFirestore(String email, String rool) async {
-    //FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    var user = _auth.currentUser;
-    CollectionReference ref = FirebaseFirestore.instance.collection('users');
-    ref.doc(user!.uid).set({'email': emailController.text, 'rool': rool});
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const LoginPage()));
   }
 }

@@ -52,6 +52,8 @@ dependencies:
   location: ^5.0.3
   animate_do: ^3.1.2
   plugin_platform_interface: ^2.1.7
+  simple_animations: ^5.0.2
+  provider: ^6.1.1
 
 dev_dependencies:
   flutter_test:

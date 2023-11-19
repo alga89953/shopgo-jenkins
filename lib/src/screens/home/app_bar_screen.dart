@@ -6,6 +6,14 @@ class AppBarShopGo extends StatelessWidget {
     super.key,
   });
 
+  //final Widget child;
+  //final double height;
+
+  //CustomAppBar({
+  //required this.height,
+  //required this.child,
+  //}) : super(child: child, preferredSize: Size.fromHeight(height));
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

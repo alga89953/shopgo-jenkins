@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopgo/googleMaps/order_traking_page.dart';
 import 'package:shopgo/src/screens.dart';
-//import 'package:shopgo/src/screens/auth/home.dart';
-//import 'package:shopgo/src/screens/auth/register.dart';
+import 'package:shopgo/src/screens/auth/login.dart';
 
 class ShopGo extends StatelessWidget {
   const ShopGo({super.key});
@@ -12,11 +11,8 @@ class ShopGo extends StatelessWidget {
   Widget build(BuildContext context) {
     final routes = {
       '/': (context) => const SplashScreen(),
-      //HomeScreen(),
+      '/login': (context) => const LoginPage(),
       '/form': (context) => const TextFormFieldScreen(),
-      '/signUp': (context) => const SignUpPage(),
-      '/auth': (context) => const AuthScreen(),
-      //'/detail': (context) => const DetailPage(plantId: 4),
       '/orderTrackingPage': (context) => const OrderTrackingPage(),
       '/googleMaps': (context) => const SplashScreen(),
       '/onBoardingScreen': (context) => const OnboardingScreen(),

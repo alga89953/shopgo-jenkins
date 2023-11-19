@@ -46,20 +46,3 @@ class ServiceModel {
     };
   }
 }
-
-/*
- // Crear un nuevo usuario
-  User user = User(id: '1', username: 'john_doe', email: 'john@example.com');
-
-  // Convertir el usuario a JSON
-  Map<String, dynamic> userJson = user.toJson();
-
-  // Imprimir el usuario en formato JSON
-  print(userJson);
-
-  // Crear un usuario desde JSON
-  User newUser = User.fromJson(userJson);
-
-  // Imprimir el nuevo usuario
-  print(newUser.username); // Debería imprimir 'john_doe'
-*/

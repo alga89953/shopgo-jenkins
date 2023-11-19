@@ -31,7 +31,7 @@ Future<List> getPeople() async {
 
 //Guardar name firestore
 Future<void> addServicio(String name, String description, String direction,
-    DateTime fechService, int numMotorista, int price, String url) async {
+    DateTime fechService, int numMotorista, String price, String url) async {
   await db.collection('services').add({
     "descripcion": description,
     "direccion": direction,

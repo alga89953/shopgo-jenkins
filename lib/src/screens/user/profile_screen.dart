@@ -1,14 +1,5 @@
-//import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
-
-//import 'package:flutter/material.dart';
-//import 'package:shopgo/src/screens.dart';
-import 'package:shopgo/src/screens/auth/login.dart';
-//import 'package:shopgo/src/screens/home/home_motorista_screen.dart';
+import 'package:shopgo/src/services/services.dart';
 
 import 'components/profile_menu.dart';
 import 'components/profile_pic.dart';
@@ -64,18 +55,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Future<void> logout(BuildContext context) async {
-    const CircularProgressIndicator();
-    await FirebaseAuth.instance.signOut();
-    // ignore: use_build_context_synchronously
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const LoginPage(),
       ),
     );
   }

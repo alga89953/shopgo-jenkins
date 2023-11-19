@@ -1,8 +1,4 @@
-//import 'package:shopgo/src/services/firebase_service.dart';
-//import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
 import 'package:shopgo/src/services/firebase_service.dart';
 
 class TextFormFieldScreen extends StatefulWidget {
@@ -94,7 +90,6 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 5.0),
               child: TextField(
-                keyboardType: TextInputType.number,
                 controller: priceController,
                 decoration: const InputDecoration(
                   labelText: "Precio",
@@ -143,7 +138,7 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                       onPressed: () async {
                         //int.parse
                         //DateTime.parse
-                        var price = int.parse(priceController.text);
+
                         var numMotorista = int.parse(numController.text);
                         var fechServicio =
                             DateTime.parse(fechServicioController.text);
@@ -154,7 +149,7 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                                 direccionController.text,
                                 fechServicio,
                                 numMotorista,
-                                price,
+                                priceController.text,
                                 urlController.text)
                             .then((_) => {Navigator.pop(context)});
                         //2018-11-29T19:41:26-08:00

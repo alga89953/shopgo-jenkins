@@ -1,12 +1,9 @@
 // ignore_for_file: avoid_print
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shopgo/src/screens.dart';
-import 'package:shopgo/src/screens/home/home_motorista_screen.dart';
-//import 'Student.dart';
-//import 'Teacher.dart';
 import 'register.dart';
 
 class LoginPage extends StatefulWidget {
@@ -260,7 +257,7 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomeMotorista(),
+              builder: (context) => const HomeMotoristaScreen(),
             ),
           );
         } else {

@@ -3,9 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shopgo/src/screens.dart';
-import 'register.dart';
+import 'package:shopgo/config/routes/app_route.gr.dart';
+import 'package:auto_route/auto_route.dart';
 
+@RoutePage()
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -199,12 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                       elevation: 5.0,
                       height: 40,
                       onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Register(),
-                          ),
-                        );
+                        AutoRouter.of(context).push(const RegisterRoute());
                       },
                       color: Colors.blue[900],
                       child: const Text(
@@ -232,6 +228,22 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.blue[900],
                           ),
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              FirebaseAuth.instance
+                                  .authStateChanges()
+                                  .listen((User? user) {
+                                if (user != null) {
+                                  print('********');
+                                  print(user.uid);
+                                  print('********');
+                                }
+                              });
+                            },
+                            icon: const Icon(Icons.ac_unit)),
                       ],
                     ),
                   ],
@@ -254,19 +266,21 @@ class _LoginPageState extends State<LoginPage> {
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         if (documentSnapshot.get('rool') == "Motorista") {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomeMotoristaScreen(),
-            ),
-          );
+          AutoRouter.of(context).push(const HomeBikerRoute());
+          //Navigator.pushReplacement(
+          //context,
+          //MaterialPageRoute(
+          //builder: (context) => const HomeMotoristaScreen(),
+          //),
+          //);
         } else {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomeUsuarioScreen(),
-            ),
-          );
+          AutoRouter.of(context).push(const HomeCustomerRoute());
+          //Navigator.pushReplacement(
+          //context,
+          //MaterialPageRoute(
+          //builder: (context) => const HomeUsuarioScreen(),
+          //),
+          //);
         }
       } else {
         print('Document does not exist on the database');

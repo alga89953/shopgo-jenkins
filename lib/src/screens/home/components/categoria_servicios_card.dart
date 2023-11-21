@@ -1,5 +1,8 @@
-import 'package:shopgo/src/utils/constant.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:shopgo/config/routes/app_route.gr.dart';
+
+import '../../../utils/constant.dart';
 
 class CategoriaServiciosCard extends StatelessWidget {
   final String _title;
@@ -50,7 +53,7 @@ class CategoriaServiciosCard extends StatelessWidget {
               child: IconButton(
                 icon: Image.asset(_imageUrl),
                 onPressed: () async {
-                  await Navigator.pushNamed(context, '/form');
+                  await AutoRouter.of(context).push(const TextFormFieldRoute());
                 },
               ),
             ),

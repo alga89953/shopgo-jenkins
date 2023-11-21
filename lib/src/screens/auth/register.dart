@@ -1,17 +1,20 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:shopgo/config/routes/app_route.gr.dart';
+import 'package:shopgo/src/services/firebase/auth/logout_service.dart';
 import 'package:shopgo/src/services/firebase/auth/singup_service.dart';
-import 'login.dart';
+import 'package:auto_route/auto_route.dart';
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+@RoutePage()
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterState extends State<Register> {
-  _RegisterState();
+class _RegisterScreenState extends State<RegisterScreen> {
+  _RegisterScreenState();
 
   bool showProgress = false;
   bool visible = false;
@@ -33,6 +36,13 @@ class _RegisterState extends State<Register> {
   ];
   var _currentItemSelected = "Usuario";
   var rool = "Usuario";
+
+  var optionsPlan = [
+    'basic',
+    'premium',
+  ];
+  var _currentItemSelectedPlan = "basic";
+  var plan = "basic";
 
   @override
   Widget build(BuildContext context) {
@@ -236,6 +246,53 @@ class _RegisterState extends State<Register> {
                         const SizedBox(
                           height: 20,
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              "Plan : ",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            DropdownButton<String>(
+                              dropdownColor: Colors.green.shade300,
+                              isDense: true,
+                              isExpanded: false,
+                              iconEnabledColor: Colors.white,
+                              focusColor: Colors.white,
+                              items:
+                                  optionsPlan.map((String dropDownStringItem) {
+                                return DropdownMenuItem<String>(
+                                  value: dropDownStringItem,
+                                  child: Text(
+                                    dropDownStringItem,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (newValueSelected) {
+                                setState(() {
+                                  _currentItemSelectedPlan = newValueSelected!;
+                                  plan = newValueSelected;
+                                });
+                              },
+                              value: _currentItemSelectedPlan,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -247,13 +304,10 @@ class _RegisterState extends State<Register> {
                               elevation: 5.0,
                               height: 40,
                               onPressed: () {
+                                //Navigator.pushReplacement(
+                                //context, MaterialPageRoute(builder: (context) => const LoginPage()));
                                 const CircularProgressIndicator();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const LoginPage(),
-                                  ),
-                                );
+                                AutoRouter.of(context).push(const LoginRoute());
                               },
                               color: Colors.white,
                               child: const Text(
@@ -277,9 +331,13 @@ class _RegisterState extends State<Register> {
                                     emailController.text,
                                     passwordController.text,
                                     rool,
+                                    plan,
                                     emailController.text,
                                     context,
                                     _formkey);
+                                logout(context);
+                                AutoRouter.of(context).push(const LoginRoute());
+
                                 //String email, String password, String rool, String emailController,
                                 //BuildContext context, GlobalKey<FormState> formkey
                               },

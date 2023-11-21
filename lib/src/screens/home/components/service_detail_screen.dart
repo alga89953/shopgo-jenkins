@@ -1,11 +1,17 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class Shoes extends StatefulWidget {
   final String image;
   final String tag;
 
-  const Shoes({super.key, required this.image, required this.tag});
+  const Shoes({
+    super.key,
+    required this.image,
+    required this.tag,
+  });
 
   @override
   State<Shoes> createState() => _ShoesState();

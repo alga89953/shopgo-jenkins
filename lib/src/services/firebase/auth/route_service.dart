@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shopgo/src/screens.dart';
-//import 'package:shopgo/src/screens/home/home_usuario_screen.dart';
+
+import '../../../screens/home/home_biker/home_biker_screen.dart';
+import '../../../screens/home/home_customer/home_customer_screen.dart';
 
 void route(context) {
   User? user = FirebaseAuth.instance.currentUser;
@@ -17,14 +18,14 @@ void route(context) {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const HomeMotoristaScreen(),
+            builder: (context) => const HomeBikerScreen(),
           ),
         );
       } else {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const HomeUsuarioScreen(),
+            builder: (context) => const HomeCustomerScreen(),
           ),
         );
       }

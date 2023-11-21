@@ -1,6 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:shopgo/src/services/firebase_service.dart';
+import 'package:shopgo/config/routes/app_route.gr.dart';
+import 'package:shopgo/src/services/firebase/firestore/firestore_service.dart';
 
+@RoutePage()
 class TextFormFieldScreen extends StatefulWidget {
   const TextFormFieldScreen({
     super.key,
@@ -13,12 +16,8 @@ class TextFormFieldScreen extends StatefulWidget {
 class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
   TextEditingController nameController = TextEditingController(text: "");
   TextEditingController descripcionController = TextEditingController(text: "");
-  TextEditingController direccionController = TextEditingController(text: "");
-  TextEditingController numController = TextEditingController(text: "");
-  TextEditingController priceController = TextEditingController(text: "");
-  TextEditingController fechServicioController =
-      TextEditingController(text: "");
-  TextEditingController urlController = TextEditingController(text: "");
+  //TextEditingController direccionController = TextEditingController(text: "");
+  //TextEditingController priceController = TextEditingController(text: "");
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                 onChanged: (String name) {},
               ),
             ),
-            Padding(
+            /*Padding(
               padding: const EdgeInsets.only(bottom: 5.0),
               child: TextField(
                 controller: direccionController,
@@ -71,7 +70,8 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                 ),
                 onChanged: (String name) {},
               ),
-            ),
+            ),*/
+            /*
             Padding(
               padding: const EdgeInsets.only(bottom: 5.0),
               child: TextField(
@@ -87,9 +87,11 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                 onChanged: (String name) {},
               ),
             ),
-            Padding(
+            */
+            /*Padding(
               padding: const EdgeInsets.only(bottom: 5.0),
               child: TextField(
+                keyboardType: TextInputType.number,
                 controller: priceController,
                 decoration: const InputDecoration(
                   labelText: "Precio",
@@ -100,8 +102,8 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                 ),
                 onChanged: (String name) {},
               ),
-            ),
-            Padding(
+            ),*/
+            /*Padding(
               padding: const EdgeInsets.only(bottom: 5.0),
               child: TextField(
                 keyboardType: TextInputType.datetime,
@@ -115,7 +117,8 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                 ),
                 onChanged: (String name) {},
               ),
-            ),
+            ),*/
+            /*
             Padding(
               padding: const EdgeInsets.only(bottom: 5.0),
               child: TextField(
@@ -130,6 +133,7 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                 onChanged: (String name) {},
               ),
             ),
+            */
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -139,19 +143,22 @@ class _TextFormFieldScreenState extends State<TextFormFieldScreen> {
                         //int.parse
                         //DateTime.parse
 
-                        var numMotorista = int.parse(numController.text);
-                        var fechServicio =
-                            DateTime.parse(fechServicioController.text);
+                        //var numMotorista = int.parse(numController.text);
+                        //var fechServicio =
+                        //DateTime.parse(fechServicioController.text);
 
-                        await addServicio(
-                                nameController.text,
-                                descripcionController.text,
-                                direccionController.text,
-                                fechServicio,
-                                numMotorista,
-                                priceController.text,
-                                urlController.text)
-                            .then((_) => {Navigator.pop(context)});
+                        await addCategoria(
+                          nameController.text,
+                          descripcionController.text,
+                          //direccionController.text,
+                          //fechServicio,
+                          //numMotorista,
+                          //priceController.text,
+                          //urlController.text
+                        ).then((_) => {
+                              AutoRouter.of(context)
+                                  .push(const HomeCustomerRoute())
+                            });
                         //2018-11-29T19:41:26-08:00
                       },
                       child: const Text('Guardar')),

@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:shopgo/src/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+@RoutePage()
 // ignore: camel_case_types
 class SearchBar_ extends StatelessWidget {
   const SearchBar_({super.key});

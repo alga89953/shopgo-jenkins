@@ -1,6 +1,7 @@
 import 'package:shopgo/src/utils/constant.dart';
-import 'package:shopgo/src/screens/home/detail_populars_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'detail_populars_screen.dart';
 
 class PopularsCard extends StatelessWidget {
   final String _name;

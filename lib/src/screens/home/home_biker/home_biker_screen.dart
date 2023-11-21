@@ -1,33 +1,62 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:shopgo/config/routes/app_route.gr.dart';
 import 'package:shopgo/src/services/firebase/firestore/firestore_service.dart';
+import 'package:auto_route/auto_route.dart';
 
-class Home extends StatefulWidget {
-  const Home({
+import '../widgets/drawer_screen.dart';
+
+@RoutePage()
+class HomeBikerScreen extends StatefulWidget {
+  const HomeBikerScreen({
     super.key,
   });
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeBikerScreen> createState() => _HomeBikerScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeBikerScreenState extends State<HomeBikerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: const DrawerApp(),
         appBar: AppBar(
-          title: const Text('Material App Bar'),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          leading: null,
+          title: const Text('ShopGo'),
+          actions: <Widget>[
+            IconButton(
+              icon: SvgPicture.asset('assets/icons/profile.svg'),
+              tooltip: 'Profile',
+              onPressed: () async {
+                await AutoRouter.of(context).push(const ProfileRoute());
+              },
+            ),
+          ],
         ),
-        body: cardList(),
+        body: servicesList(),
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
-            await Navigator.pushNamed(context, '/add');
+            FirebaseAuth.instance.authStateChanges().listen((User? user) {
+              if (user != null) {
+                // ignore: avoid_print
+                print("********");
+                print(user.uid);
+                print("********");
+              }
+            });
+            //AutoRouter.of(context).push(const TextFormFieldRoute());
+
             setState(() {});
           },
           child: const Icon(Icons.add),
         ));
   }
 
-  FutureBuilder<List<dynamic>> cardList() {
+  FutureBuilder<List<dynamic>> servicesList() {
     return FutureBuilder(
         future: getPeople(),
         builder: (context, snapshot) {
@@ -73,10 +102,34 @@ class _HomeState extends State<Home> {
                   ),
                   direction: DismissDirection.startToEnd,
                   key: Key(snapshot.data?[index]['uid']),
-                  child: ListTile(
+                  child: Card(
+                    margin: const EdgeInsets.all(5),
+                    child: ListTile(
+                      leading: const FlutterLogo(size: 72.0),
+                      title: Text('${snapshot.data?[index]['nombre']}'),
+                      subtitle: Text('${snapshot.data?[index]['nombre']}'),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.volume_up),
+                        tooltip: 'Increase volume by 10',
+                        onPressed: () async {
+                          await Navigator.pushNamed(context, "/edit",
+                              arguments: {
+                                "nombre": snapshot.data?[index]['nombre'],
+                                "uid": snapshot.data?[index]['uid']
+                              });
+                          setState(() {});
+                        },
+                      ),
+                      isThreeLine: true,
+                    ),
+                  ), /*ListTile(
                     title: Text(
                       (snapshot.data?[index]['precio']).toString(),
                     ),
+                    selectedColor: Colors.amber,
+                    iconColor: Colors.amber,
+                    textColor: Colors.amber,
+                    trailing: Icon(Icons.favorite_rounded),
                     onTap: (() async {
                       await Navigator.pushNamed(context, "/edit", arguments: {
                         "nombre": snapshot.data?[index]['nombre'],
@@ -84,7 +137,7 @@ class _HomeState extends State<Home> {
                       });
                       setState(() {});
                     }),
-                  ),
+                  ),*/
                 );
               },
             );

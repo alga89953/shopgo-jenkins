@@ -2,17 +2,11 @@
     "user": {
         "user":[
             {
-                "idPlan": "",
                 "gmail": "",
                 "role": "",
                 "name": "",
-                "photo": "",
-                "plan": [
-                    {
-                        "name": "basic",
-                        "premium": "premium"
-                    }
-                ]
+                "photo": "", 
+                "plan": ""
             }
             
         ]

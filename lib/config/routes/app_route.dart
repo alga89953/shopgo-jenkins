@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:shopgo/src/privacy_page.dart';
 import 'app_route.gr.dart';
 //part 'app_router.gr.dart';
 
@@ -16,5 +17,8 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: ProfileRoute.page),
         AutoRoute(page: TextFormFieldRoute.page),
         AutoRoute(page: PruebasAuth.page),
+        AutoRoute(page: RegisterRoute.page),
+        AutoRoute(page: ResetRoute.page),
+        AutoRoute(page: PrivacyRoute.page)
       ];
 }

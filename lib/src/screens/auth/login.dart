@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shopgo/config/routes/app_route.gr.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:shopgo/src/privacy_page.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
@@ -200,11 +201,11 @@ class _LoginPageState extends State<LoginPage> {
                       elevation: 5.0,
                       height: 40,
                       onPressed: () {
-                        AutoRouter.of(context).push(const RegisterRoute());
+                        AutoRouter.of(context).push(const ResetRoute());
                       },
                       color: Colors.blue[900],
                       child: const Text(
-                        "Register Now",
+                        "Recuperar Contraseña",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -217,9 +218,51 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 5,
                     ),
+                    TextButton(
+                        onPressed: () {
+                          showAboutDialog(
+                              context: context,
+                              applicationName: "ScreenDat",
+                              applicationVersion: "1.1.1",
+                              applicationLegalese:
+                                  "ShopGo o ${DateTime.now().year} ShoopGo",
+                              applicationIcon: const FlutterLogo(),
+                              children: [
+                                TextButton(
+                                    onPressed: () {
+                                      AutoRouter.of(context)
+                                          .push(const PrivacyRoute());
+                                    },
+                                    child: const Text('Terms Privacy'))
+                              ]);
+                        },
+                        child: const Text('Terms Privacy')),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        MaterialButton(
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20.0),
+                            ),
+                          ),
+                          elevation: 5.0,
+                          height: 40,
+                          onPressed: () {
+                            AutoRouter.of(context).push(const RegisterRoute());
+                          },
+                          color: Colors.blue[900],
+                          child: const Text(
+                            "Registrarse",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
                         Text(
                           "Shop go",
                           style: TextStyle(
@@ -267,20 +310,8 @@ class _LoginPageState extends State<LoginPage> {
       if (documentSnapshot.exists) {
         if (documentSnapshot.get('rool') == "Motorista") {
           AutoRouter.of(context).push(const HomeBikerRoute());
-          //Navigator.pushReplacement(
-          //context,
-          //MaterialPageRoute(
-          //builder: (context) => const HomeMotoristaScreen(),
-          //),
-          //);
         } else {
           AutoRouter.of(context).push(const HomeCustomerRoute());
-          //Navigator.pushReplacement(
-          //context,
-          //MaterialPageRoute(
-          //builder: (context) => const HomeUsuarioScreen(),
-          //),
-          //);
         }
       } else {
         print('Document does not exist on the database');

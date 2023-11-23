@@ -335,7 +335,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     emailController.text,
                                     context,
                                     _formkey);
-                                logout(context);
+                                //Slogout(context);
                                 AutoRouter.of(context).push(const LoginRoute());
 
                                 //String email, String password, String rool, String emailController,

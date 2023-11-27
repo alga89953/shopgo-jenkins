@@ -1,0 +1,50 @@
+// pipeline{
+//     agent any
+//     stages{
+//         stage('Build'){
+//             steps{
+//                 echo "Etapas BUILD no disponible"
+
+//             }
+//         }
+//         stage ('Tests'){
+//             steps {
+//                 echo "Etapa TEST no disponible"
+
+//             }
+//         }
+//         stage ('Deploy')
+//         steps{
+//             sh "doker-compose down -v"
+//         }
+//     }
+//}
+pipeline {
+    agent any
+
+    stages {
+        stage('Preparación') {
+            steps {
+                sh 'flutter pub get'
+            }
+        }
+
+        stage('Compilación') {
+            steps {
+                sh 'fastlane build'
+            }
+        }
+
+        stage('Pruebas') {
+            steps {
+                sh 'fastlane test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'fastlane deploy'
+            }
+        }
+    }
+}

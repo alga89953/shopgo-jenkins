@@ -1,3 +1,4 @@
+//La configuracion de la web
 // pipeline{
 //     agent any
 //     stages{

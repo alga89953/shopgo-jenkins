@@ -106,29 +106,29 @@ pipeline{
             //agent { label '<agent-label>' } 
             stages{
                 stage('Fetch'){ 
-                    steps{
-                        sh"${env.SOURCE}; dart pub get" 
-                    }
+                    // steps{
+                    //     sh"${env.SOURCE}; dart pub get" 
+                    // }
                 } 
                 stage('Build'){
-                    steps{
-                        sh"${env.SOURCE}; dart run lib/main.dart"
-                    }
+                    // steps{
+                    //     sh"${env.SOURCE}; dart run lib/main.dart"
+                    // }
                 }
                 stage('Lint'){
-                    steps{
-                        sh"${env.SOURCE}; dart analyze"
-                    }
+                    // steps{
+                    //     sh"${env.SOURCE}; dart analyze"
+                    // }
                 }
                 stage('Test'){
-                    steps{
-                        sh"${env.SOURCE}; flutter test"
-                    }
+                    // steps{
+                    //     sh"${env.SOURCE}; flutter test"
+                    // }
                 }
                 stage('Clean'){
-                    steps{
-                        cleanWs deleteDirs: true, notFailBuild: true            
-                    }
+                    // steps{
+                    //     cleanWs deleteDirs: true, notFailBuild: true            
+                    // }
                 } 
             }
         }

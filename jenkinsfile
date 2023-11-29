@@ -1,5 +1,5 @@
 pipeline {
-    agent { label '<agent-label>' }
+    agent { label 'linux' }
     // environment {
     //     GOOGLE_SERVICES_JSON = credentials('google-services-json') // Aquí debes configurar las credenciales para Firebase
     // }

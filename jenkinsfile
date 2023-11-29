@@ -41,7 +41,6 @@ pipeline {
             }
         } 
     }
-}
 
 
 //La configuracion de la web

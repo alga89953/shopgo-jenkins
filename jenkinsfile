@@ -20,6 +20,9 @@
 //         }
 //     }
 //}
+
+
+// // //Configuracion de flutter app movil
 pipeline {
     agent any
 
@@ -30,12 +33,12 @@ pipeline {
             }
         }
 
-        // stage('Compilación') {
-        //     steps {
-        //         sh 'clear'
-        //     }
-        //     //fastlane build
-        // }
+        stage('Compilación') {
+            steps {
+                sh 'fastlane build'
+            }
+            //clear
+        }
 
         stage('Pruebas') {
             steps {

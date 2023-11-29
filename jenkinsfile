@@ -32,8 +32,9 @@ pipeline {
 
         stage('Compilación') {
             steps {
-                sh 'fastlane build'
+                sh 'clear'
             }
+            //fastlane build
         }
 
         stage('Pruebas') {

@@ -1,13 +1,3 @@
-// pipeline {
-//     agent any
-//     environment {
-//         GOOGLE_SERVICES_JSON = credentials('google-services-json') // Aquí debes configurar las credenciales para Firebase
-//     }
-//     stages {
-//         stage('Fetch') { 
-//             steps {
-//                 sh "${env.SOURCE}; dart pub get" 
-//             }
 pipeline{
             
             agent any 

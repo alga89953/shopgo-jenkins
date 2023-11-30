@@ -103,7 +103,7 @@
 // // //Bitbucket
 pipeline{
             //This line is to tell Jenkins which agent should run the pipeline
-            agent { label '<agent-label>' } 
+            agent any 
             stages{
                 stage('Fetch'){ 
                     steps{

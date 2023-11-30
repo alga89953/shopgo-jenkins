@@ -1,31 +1,36 @@
-pipeline{
-            
-            agent any 
-            stages{
-                stage('Fetch'){ 
-                    steps{
-                        sh"dart pub get" 
-                    }
-                } 
-                stage('Build'){
-                    steps{
-                        sh"dart run lib/main.dart"
-                    }
-                }
-                stage('Lint'){
-                    steps{
-                        sh"dart analyze"
-                    }
-                }
-                stage('Test'){
-                    steps{
-                        sh"flutter test"
-                    }
-                }
-                stage('Clean'){
-                    steps{
-                        cleanWs deleteDirs: true, notFailBuild: true            
-                    }
-                } 
+pipeline {
+    agent any
+    stages {
+        stage('Fetch') {
+            steps {
+                // Ejecuta 'flutter pub get' para obtener las dependencias del proyecto
+                sh "flutter pub get"
             }
         }
+        stage('Build') {
+            steps {
+                // Ejecuta 'flutter build' para compilar el proyecto
+                sh "flutter build apk" // Puedes ajustar el comando según tus necesidades
+            }
+        }
+        stage('Lint') {
+            steps {
+                // Ejecuta 'flutter analyze' para analizar el código
+                sh "flutter analyze"
+            }
+        }
+        stage('Test') {
+            steps {
+                // Ejecuta 'flutter test' para ejecutar pruebas
+                sh "flutter test"
+            }
+        }
+        stage('Clean') {
+            steps {
+                // Limpia el espacio de trabajo
+                cleanWs deleteDirs: true, notFailBuild: true
+            }
+        }
+    }
+}
+
